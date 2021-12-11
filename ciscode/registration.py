@@ -1,3 +1,6 @@
+import numpy as np
+
+
 def PointCloud(A, B):
     '''
     Calculates the least-squares best-fit transform between corresponding 3D points A->B
@@ -37,3 +40,31 @@ def PointCloud(A, B):
     T[0:3, 3] = t
 
     return T, R, t
+
+
+def frameInv(T):
+    # output -
+    """[summary]
+
+    Args:
+        T ([T, numpy array 4x4, ]): [homogeneous frame transformation]
+
+    Returns:
+        Tinv, inverse of the frame
+        Rinv, rotation matrix
+        pinv - translation vector 
+    """
+    T = np.array(T)
+
+    R = T[0:3, 0:3]
+    P = T[0:3, 3]
+
+    # Rinv = np.transpose(R)
+    Rinv = np.linalg.inv(R)
+    Pinv = -np.matmul(Rinv, P)
+
+    Tinv = np.identity(4)
+    Tinv[0:3, 0:3] = Rinv
+    Tinv[0:3, 3] = Pinv
+
+    return Tinv, Rinv, Pinv

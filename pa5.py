@@ -71,9 +71,37 @@ def main(
         #       "-Debug-SampleReadingsTest-----------")
         print("\t \t ----------- Input File :",
               f"{input_file}{name}", "-----------")
+        # leds from sample file
+        frA = sampleReading.NA_dict  # rigid body A
+        frB = sampleReading.NB_dict  # rigid body B
 
-        logging.info(sampleReading.NA_dict[0])
+        logging.info(frB[149])
+
+        A = []
+        dk = []
+        for k in range(150):
+            Fak, Ra, pa = registration.PointCloud(rbA, frA[k])
+            Fbk, Rb, pb = registration.PointCloud(rbB, frB[k])
+            Ak = np.matmul(Ra, tipA) + pa
+
+            FbInv, RbInv, pbInv = registration.frameInv(Fbk)
+
+            d = np.matmul(RbInv, Ak) + pbInv
+
+            A.append(Ak)
+            dk.append(d)
+            # logging.info(Fak)
+
         break
+
+    A = np.array(A)
+    dk = np.array(dk)
+
+    # logging.info(A)
+    # logging.info(dk)
+    # logging.info(100*np.linalg.norm(A-dk))
+
+    # print(np.shape(A))
 
 
 if __name__ == "__main__":
