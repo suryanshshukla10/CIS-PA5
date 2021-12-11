@@ -1,0 +1,141 @@
+Now i have to find how to add the numpy array for reading the files.
+
+We have to read the readers.RigidBody for finding the required detail.
+
+Lets try to print the result of RigidBodyA and RigidBodyB and see what will happen with them.
+
+the output of the rigid body is 6x3 array. if we are having the same numbers in the orignianl file then we are done.
+
+To check the original file, we have to open the Problem5-BodyA. in vs code.
+
+In file B we have the tip as zero. There are 6 rows. 
+
+Similarly in file A, ther are 6 value for 6 leds and the last value is non zero which means it is the value of the tip. 
+
+So at the end, we have the option to store these values in rbA, rbB and tipA. they are going to be the numpy array and must be saved as constant values. 
+
+So we have the correct result for the two values. now the next task is to define second array for the sample file. But before defining the sample frame for the file it would be better to read the file. 
+
+We can look into the detail of how the sample file was read previously.
+
+
+There are many sample files. So we are have to read many files. It would be better to first denote the sample file alphabets. 
+
+We have A, B, C, D,E,F,
+G,H,J,K
+for the G,H,J,K these are unknown value files. 
+
+Therefore we have the same file format as in the previous file. 
+
+I should change the temp3 with some other file name like fileLetter. 
+
+Now inside the file letter we have q, which tracks the file 
+
+It is okay that the print is reading file name. But i don't now where to read the sampleReading?
+
+okay the file is printing accorngly. I have to figureout the inputFile value. 
+- Input file value should be something that is string
+- It must be based on two values. 
+- It must be in PA4 asg. 
+
+Everthing looks good. the input_file is assigned with the PA5-first letter and the other name is given according to the file format
+And it's working.  
+
+Input file is working fine accoring to the file name.
+
+The other function for showing the logging info is also working well. 
+
+Now the question is that values we are getting in the function is correct or not. 
+
+For that we have to check it with the input data structure. As given in the input file. 
+
+Looks like it's same. Let's check the next few terms. 
+
+It's having the correct thing. Only we need to check what is written in the input file 
+
+Ns = Na + Nb +Nd =  16
+
+Nsample = 150
+
+name of file
+
+Nmode = 6
+
+if we assume that Na = 6, Nb = 6
+then Nd = 16-12 = 4
+
+And we have 4 zeros. 
+
+there are total frames 150. that means for 1 frame there are 16 values so for 150 frames there are 150*16 =2400 values i.e. 2401 lines. 
+
+yes there are 2401 lines. 
+
+That means we have to run the code for registratio for 150 times. That also means we are going to have total 150 A values. i.e. k = 150
+- And the value calculated by the reader need to be changed. 
+- let's try to write 149 into our frame calcualtion. 
+- its not working. 
+- That means we need to make that loop 150 times. 
+- The loop should be in reader. samplereading. 
+
+-There is no number in the sample reading
+- i added 150 in key range.
+- now the function is working. 
+- lets check the last value of - the line number must be 2401-(10) = 2391
+- Both the readins are correct. 
+- To get the frame we just have to enter the number like [1] = is going to give frame 2 and frame [k-1] = frame k
+- I am writing this with frA and frB for frame A rigid body and frame B rigid body.
+
+- This function is working well. 
+- Now the next goal is point cloud registration and formation of the A
+
+Point Cloud registration 
+
+- the first step is to identify the two input clouds
+- Second step is to write the function for those clouds
+- third step is to verify that the cloud is working fine. 
+
+- For completing first step, we have the first cloud for frA[k] and the rbA. 
+- Above method can be repeated for finding Fbk
+- Fak is the registration we get from the point cloud registration. 
+- Now we have to write the point cloud registration function. 
+- output of the registration function is T,R,t. 
+- We only need first value 
+- okay we are gettting correct values for Fak. 
+- Now we need to multiply Fak with tipA
+
+- now we have reasonalbe vector
+- the next step is to store that vector into the list
+
+For loop
+- We are only calculating the vector for 0, but for now we have to calculate it for all the values.
+- we can use for loop for that
+- rangle should be like rangle(150) because of 150 loops
+- put the variable k in it.
+- then the A array must be 150 rows long. 
+- there are 150 values it's good. Now with the same calculation 
+- is the values of Fak changing with the frame or not? 
+- it looks the value of Fak is changing. Because we input the frA as changing.
+
+- now we can repeat this for Fbk. 
+- I expect that the Fbk should be calcualted in the same way
+- i have entered the rbB and frB for Fbk 
+
+- for calculation of dk we need to find the required calculation. 
+
+Instead of defining the inverse here, why not define a module for calculation of the invers of the function. the inverse of the frame, we can give the name as frameInv(R,p) and then return the inverse calculation as Tinv,Rinv,pinv which would be a great thing. we already multiplied the Atip with the calculated registration. i.e. Fak*Atip so it is giving the correct result. 
+
+the only thing remainig is 
+
+frameInv
+
+-I'm taking the only input as T which is homogeneous frame transformation matrix.
+- Then i will extract the R and p from the numpy array
+- it's better to write the numpy array before 
+
+ 
+
+
+
+
+
+ 
