@@ -1,7 +1,8 @@
+import logging
 from typing import Tuple
 import numpy as np
 from numpy import dot
-from math import sqrt
+from math import inf, log, sqrt
 
 
 def TriclosestPoint(TRI, P):
@@ -53,7 +54,6 @@ def TriclosestPoint(TRI, P):
             if t < 0.0:
                 # region4
                 if d < 0:
-                    # logging.info("region4")
                     t = 0.0
                     if -d >= a:
                         s = 1.0
@@ -205,10 +205,6 @@ def TriclosestPoint(TRI, P):
     dist = sqrt(sqrdistance)
 
     PP0 = B + s * E0 + t * E1
-    # logging.info("distance:")
-    # logging.info(dist)
-    # logging.info("point coordinates")
-    # logging.info(PP0)
 
     return dist, PP0
 
@@ -225,12 +221,25 @@ def closestPoint(mS, mU, mT, sk):
     Returns:
        ck [np array nx3]: [closest point on triangle to sk]
     """
+    ck = []
 
-    TRI = np.array([mS[0], mU[0], mT[0]])
+    lenSk = int(len(sk))
+    for i in range(lenSk):
+        for j in range(len(mS)):
+            TRI = np.array([mS[j], mU[j], mT[j]])
 
-    dist, PP0 = TriclosestPoint(TRI, sk)
-    ck = PP0
+            EstDist, Estpp0 = TriclosestPoint(TRI, sk[i])
 
-    print(TRI)
+            if j == 0:
+                dist = EstDist
+                pp0 = Estpp0
+
+            if EstDist < dist:
+                dist = EstDist
+                pp0 = Estpp0
+
+        ck.append(pp0)
+
+    ck = np.array(ck)
 
     return ck

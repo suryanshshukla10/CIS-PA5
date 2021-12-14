@@ -27,4 +27,142 @@ sk and dk are defind correctly.
 
  It looks like somewhat the program is working. 
 
- 
+ I don't know whether this program is finding the correct values in PA5 mesh or pa4. 
+
+ Actually both the files are same so it doesn't matter what the file we are haivng. 
+
+- What i have to do in this file?
+- What are the changes we need to make?
+- Why the program is working fine?
+- What should be the output?
+- What should be the value of the input?
+- Why the program need to change?
+- What changes we want?
+- Where we want the changes?
+- How we can make those changes?
+- What is the plan of working  with those changes?
+
+I think the changes we need is in the triangle closest point.
+
+- How to calculate the ck?
+
+We have to create a logic. And create a for loop over the sk. 
+
+- what's the structure of sk?
+Sk is of length 150x3
+one row contains one point. 
+we have to input one point in trianglClosestPoint
+
+so for this i am creating a for loop 
+
+okay so we have sk one value we can input that tp triClpse point 
+
+the first goal is to find the closest triangle for first point. 
+
+- What does this for loop will do?
+This for loop will loop over the all valus of point in sk.
+
+WE need to create some kind of if else statement. 
+
+the goal of if else is to find the point with the smallest distance 
+
+I don't think this is nice choice.
+
+1. We have triangle.
+
+We are choosing the closest point on the triangle. Keeping the triangle fix, we only iterate with the point. 
+
+As we will have only one fixed closest point. We can iterate over many points. 
+
+if the new distance is closer than the previous distance, then we take it as closest distance.
+
+We assigned a variable called count. With this variable it will increment with the loop. 
+
+I don't want to assigned
+We can either assign the number in 
+
+We have assigned the number. 
+
+But now i think it's good to check sk. 
+I will do the check but the first thing is to check the inital distance
+
+If the value of the estimated distance is less than the value previously assigned to te distance. 
+
+For i=0
+mesning the start of the iteration.
+We defined the distace calculated as the inital choice.
+After doing that, we can compare the calculated distance wit the new distance 
+if it comes true then the new distance will replace the old distance.
+
+and the output will be the pp0 where the pp0 is the closest point. 
+
+we've two answer of the output. we can actually compare it without going through that process. 
+
+loop is not working. it was not working because of break. it's insance
+
+Why the ne w poit is not chanign?
+
+lets see what will happen if we give different points 
+
+Closest point is not working correctly/
+
+
+It is returning the same input point. 
+
+I think we should the closest point on the triangle with some othe method.  
+
+This funciton is calcualing the closest distance, not the closeest point. 
+
+Can we draw a normal and 
+
+If that is the closest point, then 
+
+In relity i don't know how I am going to complete this assignment.
+
+Because the previous functon is not working. 
+
+I think as of now we don't have any choice than think that the point that we are having is the closest.
+
+And in the report we have to write about he brute force search for finding the closest point on the triangle. 
+
+There is no point in wating the time in such thing. We only have to calcualte the closeset point on the triangle. 
+
+
+We thought that the closest point on the triangle is going to be calcualted from many triangles. The shortest distance will be the closest point. 
+
+So for that we can do one thing, it is to find the cloest point an also the closest distance correspondig to that closest point. 
+
+IF there is some change in the closet point and the closeset distance, than we hit the head of the nail. Otehrwise there is soem error. 
+
+I think the final answer is workig fine 
+
+so we can use this to append the ck 
+
+Now the final thing is to use the for loop. 
+
+I should have done the reverse. 
+
+Using triangle mesh, and then make that thing into loop. 
+
+Actually it's now consuming more and more time and this should not to be in this manner. 
+
+I should take a break. 
+
+Now if we are going to calculate the
+
+It should be reverse.
+
+- What need to be reversed?
+Use one more for loop and inside that amke the change in TRI
+
+- Nowwe can hav the 
+
+With the inner loop, we will calcualte the closeset point 
+
+With this method we are having reperated same closest point, which is impossible sitionaion.
+
+Now it looks good. We are having varuable closest points 
+
+After that, we can define the ICP to calcualte the Freg. 
+
+

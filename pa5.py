@@ -7,7 +7,7 @@ from pathlib import Path
 import numpy as np
 from scipy.spatial.distance import cdist
 
-from ciscode import readers, writers, registration, trianglePoints
+from ciscode import readers, writers, registration, trianglePoints, icp
 
 
 FORMAT = "%(message)s"
@@ -138,7 +138,24 @@ def main(
 
         ck = trianglePoints.closestPoint(mS, mU, mT, sk)
 
-    c_k = FindClosestPointMesh(sk)
+        return ck
+
+    # ck is closest point on the triangle with respect to sk
+    ck = FindClosestPointMesh(sk)
+
+    # ICP
+    # calculation Freg
+    Freg, _ = icp.icp(sk, ck)
+    # recalculate SK
+    Rreg = Freg[0:3, 0:3]
+    Preg = Freg[0:3, 3]
+    new_sk = []
+    new_ck = []
+    for l in range(len(sk)):
+        new_sk.append(np.matmul(dk[l], Rreg) + Preg)
+        new_ck.append(np.matmul(dk[l], Rreg) + Preg)
+    sk = np.array(new_sk)
+    ck = np.array(new_ck)
 
 
 if __name__ == "__main__":
