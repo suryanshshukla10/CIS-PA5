@@ -1,0 +1,116 @@
+Here we have to calculate the closest point in the triangle.
+
+I don't know how to calculate the closest point? 
+
+It is fairly simple process. But the problem is that there is calcualtion of the vertices of the triangle. 
+
+So there is one way to find about the vertices. It is to run the code and put loggin.info as(V)
+
+So it's good idea to get what is pringing in the triangle. 
+
+It is getting difficult to calcualte the closest point on the triangle. I can do the thing of calcualting the Sk with the inital guess that Freg = I. 
+
+But i can't calculate the closes point on the triangle because how to form the triangle? 
+
+Because when i am trying to form the triangle then which mesh to use is not defined?
+
+Suppose we have the given mesh, lets try to find what is required to find the ICP after calculation of the Ck?
+
+It seems that after calculation of the point cloud there is only one thing need to calculate i.e. Freg. It is easy to calculate. 
+
+I can also do that the point cloud calcualtion is the only matter of findning. 
+
+So let's try to find the corresponding points.
+
+- [] Undertand the mesh structure of the triangle. 
+
+What if the vertex values are these only. 
+
+Because it is difficult to have the values which is not being divided by 1568.
+
+There is only one coordinate of it.
+
+But there is written 3D. 
+
+Lets try to find what is written in the mesh file. 
+
+These are verties, in CT coordinates. 
+Vx, Vy, Vz.
+
+Then how to find the value of closest point?
+
+How these vertices are going to form a triangle?
+
+
+As it is difficult to find the closest point on the triangle mesh, it would be possible that they have provided some other defination of Ck other than defining the coordinates of the mesh.
+
+Should we performa a rigid registration with taking the triangles as it is without using anythin else and get the Freg value.
+
+I know that it was a wrong method. But we can have the vec{d} and vec{c}
+
+Only matter is that we don't know the ck
+
+I think we already have Ck and we are trying to find the coordinates of the deformed surface.
+
+The whole algorithm depends on the previous PA3 and PA4 algorithm of closest point calcualtion. 
+
+It was done using formation of the tree. But i don't have the tree. Who knows that we have to find that tree. 
+
+At this point we just have to complete the assignment. And keep going forward to the next assignment. I know that it's wrong. And it is not going to be possible correct. 
+
+But nothing can be done.
+
+I can only explain in better way of doing this assignment. 
+
+I didn't get what is qmk?
+Where to find the qmk?
+What does qmk represents?
+
+As of now i can't find where is the triangle and how to find the correspondig mesh?
+
+What if there is no triangle on the surface.
+
+There is surface mesh. 
+It is okay. 
+It may be like the figure we saw.
+That figure was having just the lines. 
+
+If they wanted to give the surface mesh structure, then why they would have given the surface mesh file?
+
+Surface mesh gives simply the surface. 
+
+We are right that the surface represnts the correct surface.
+
+The mean surface is represented by the first vertices.
+
+Are the vertices enough to represent the surface?
+I don't think so.
+
+Because the vertices only represents the vertices. 
+Why not use the indices of the vertices?
+
+Why not use it?
+Indices are the same. 
+And these two files are having the same thing. 
+
+Because the average vertices represents the same as the first vertices of the triangle.
+
+It all depends on the surface.
+
+We can assume that we can use the indices. But it's still not clear how i am going to use it. 
+
+Using the vertices of the triagle i can figure out the closes point on the triangle. 
+
+And this value should be corresponding to the dk vector. 
+
+Therefore from this we can get the corresponding Freg. 
+
+But the first thing is to find the 
+
+I also want to know what is the logging.debug means?
+
+
+
+
+
+

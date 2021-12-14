@@ -1,0 +1,30 @@
+So as of now i can think that if we want the program to work we need to find the closest point on the triangle. Which needs the triangle. 
+
+I think the possibl triangle is with the mesh. Because mesh structure is possible with the indices and vertices. 
+
+We are having the same number of vertices as the triangle need to form. 
+
+And we are already having the structure which is going to calculate the indices of the triangl. 
+
+If we go through this way then only thing required is changing the indices vertices according to dofferent modes.
+
+Before taking this step, i think i should go with reading the paper on the triangle mesh. 
+
+If that is correct, then i am going to use that method for calcaultion of the triangle vertices.
+
+But i think it would be better to have atleast some idea of what would be the next step because it would like how we are going to calculate the actual values of the lambda or Freg?
+
+
+The new thing to do in PA5 is to define the sk. For inital guess, we are defining the sk = ck. 
+
+sk and dk are defind correctly. 
+ 
+ Now we can take the input the files 
+
+ so the import works
+
+ now we have to check wherther the vertices are working or not 
+
+ It looks like somewhat the program is working. 
+
+ 
