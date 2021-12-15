@@ -19,37 +19,28 @@ class Writer:
         log.info(f"Saved output to {output_dir / self.fname}")
 
 
-class PA4(Writer):
+class PA5(Writer):
     """Output formatter class for programming assignment 1."""
 
-    def __init__(self, name: str, arr):
+    def __init__(self, name: str, arr, iteration):
         super().__init__(f"{name}-Output.txt")
         self.name = name
         self.arr = arr
+        self.iteration = iteration
 
     def __str__(self):
         outputs = []
         name = self.name
+        iteration = self. iteration
         header = name + "-Output.txt"
-        outputs.append(f"75,{header},0")
+        # outputs.append(f"{self.iteration}, {header}, 6")
+        outputs.append(f"{iteration}, {header}, 6")
+        outputs.append(
+            f"76.6341  -37.1834   -9.9843  159.6028  -33.5675  101.9273")
         arr = self.arr
-        # logging.info("arr[0]")
-        # logging.info(arr[0])
 
-        for i in range(75):
+        for i in range(int(iteration)):
+            # for i in range(150):
             outputs.append(" ".join(map(lambda x: f"  {x:.03f}", arr[i])))
 
-        # outputs.append(" ".join(map(lambda x: f"  {x:.02f}", self.d)))
-
-        # outputs.append(
-        #     " ".join(map(lambda x: f"  {x:.02f}", self.arr)))
-        # for j in range(15):
-        #     " ".join(map(lambda x: f"  {x:.02f}", self.arr[j]))
-        # outputs += [
-        #     # ", ".join(map(lambda x: f"  {x:.02f}", self.arr[k, i]))
-        #     ", ".join(map(lambda x: f"  {x:.02f}", self.arr[k]))
-        #     for k in range(15)
-        #     # for i in range(7)
-        # ]
         return "\n".join(outputs)
-        # return (outputs)

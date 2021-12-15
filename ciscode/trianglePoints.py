@@ -4,6 +4,8 @@ import numpy as np
 from numpy import dot
 from math import inf, log, sqrt
 
+from ciscode import barycentric
+
 
 def TriclosestPoint(TRI, P):
     """[Calculate the distance of a given point P from a triangle TRI.]
@@ -220,9 +222,11 @@ def closestPoint(mS, mU, mT, sk):
 
     Returns:
        ck [np array nx3]: [closest point on triangle to sk]
+       q0k : as given in the mathematical explanation
     """
     ck = []
-
+    q0k = []
+    itr = 0
     lenSk = int(len(sk))
     for i in range(lenSk):
         for j in range(len(mS)):
@@ -237,9 +241,18 @@ def closestPoint(mS, mU, mT, sk):
             if EstDist < dist:
                 dist = EstDist
                 pp0 = Estpp0
+                itr = j
+
+        point = pp0
+        a = np.array(mS[itr])
+        b = np.array(mU[itr])
+        c = np.array(mT[itr])
+        l1, l2, l3 = barycentric.barycentric_coordinates(point, a, b, c)
+        q0 = l1*a + l2 * b + l3*c
 
         ck.append(pp0)
-
+        q0k.append(q0)
     ck = np.array(ck)
+    q0k = np.array(q0k)
 
-    return ck
+    return ck, q0k

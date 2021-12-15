@@ -1,6 +1,5 @@
 import numpy as np
 from pathlib import Path
-import logging
 
 
 class Vertices:
@@ -18,6 +17,69 @@ class Vertices:
         arrVer = np.loadtxt(path, delimiter=" ", skiprows=1,
                             max_rows=self.N_vertices)
         self.arrVer = arrVer
+
+
+class modeVertices:
+    """Read vertices
+    """
+
+    def __init__(self, path: str):
+        self.path = path
+        with open(path, "r") as f:
+            line = next(f)
+            toks = line.replace(" ", "").split(",")
+
+        m0v = np.loadtxt(path, delimiter=",", skiprows=2,
+                         max_rows=1568)
+
+        m1v = np.loadtxt(path, delimiter=",", skiprows=1571, max_rows=1568)
+
+        m2v = np.loadtxt(path, delimiter=",", skiprows=3140, max_rows=1568)
+
+        m3v = np.loadtxt(path, delimiter=",", skiprows=4709, max_rows=1568)
+
+        m4v = np.loadtxt(path, delimiter=",", skiprows=6278, max_rows=1568)
+
+        m5v = np.loadtxt(path, delimiter=",", skiprows=7847, max_rows=1568)
+
+        m6v = np.loadtxt(path, delimiter=",", skiprows=9416, max_rows=1568)
+
+        # print("m1v")
+        # print(m1v[0])
+        # print(m1v[1567])
+        # print("----")
+
+        # print("m2v")
+        # print(m2v[0])
+        # print(m2v[1567])
+        # print("----")
+
+        # print("m3v")
+        # print(m3v[0])
+        # print(m3v[1567])
+        # print("----")
+
+        # print("m4v")
+        # print(m4v[0])
+        # print(m4v[1567])
+        # print("----")
+
+        # print("m5v")
+        # print(m5v[0])
+        # print(m5v[1567])
+        # print("----")
+
+        # print("m6v")
+        # print(m6v[0])
+        # print(m6v[1567])
+        # print("----")
+
+        self.m1v = m1v
+        self.m2v = m2v
+        self.m3v = m3v
+        self.m4v = m4v
+        self.m5v = m5v
+        self.m6v = m6v
 
 
 class Indices:
@@ -56,7 +118,7 @@ class RigidBody:
 class sampleReading:
     """Parses the sample reading data."""
 
-    def __init__(self, path: str):
+    def __init__(self, path: str, keys):
         self.path = path
         with open(path, "r") as f:
             line = next(f)
@@ -70,12 +132,14 @@ class sampleReading:
         # NA1 = arr[:6]
         # NA1.append(12)
         # self.NA1 = NA1
+        self.keys = keys
         NA_dict = {}
         NB_dict = {}
         NA_dict[0] = arr[0:6]
         NB_dict[0] = arr[6:12]
-        keys = range(150)
-        for i in keys:
+
+        # keys = range(150)
+        for i in range(keys):
             k = i + 1
             x_a = k * 10 + k*6
             y_a = k*10 + (k+1)*6
