@@ -185,8 +185,7 @@ def main(
 
         out_list = []
         l1 = []
-        print(iteration)
-        logging.info(sk.shape)
+
         for i in range(len(sk)):
             temp = [sk[i, 0], sk[i, 1], sk[i, 2],
                     ck[i, 0], ck[i, 1], ck[i, 2], dist_new[i]]
